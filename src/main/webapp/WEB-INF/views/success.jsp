@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -28,6 +29,29 @@
 			<font size="3.5" style="font-family: Calibri, Garamond, Serif; color: #D2691E;">Billing Automated Request System</font>
 			</center>
 			<br><br>
+			
+			<table>
+				<tr>
+					<th>billing cycle</th>
+					<th>start date</th>
+					<th>end date</th>
+					<th>firstname</th>
+					<th>lastname</th>
+					<th>amount</th>
+				</tr>
+				
+				<c:forEach var="recordItem" items="${records}">
+				<tr>
+					<td>${recordItem.billingCycle}</td>
+					<td>${recordItem.startDate}</td>
+					<td>${recordItem.endDate}</td>
+					<td>${recordItem.customerLastName}</td>
+					<td>${recordItem.customerFirstName}</td>
+					<td>${recordItem.amount}</td>
+				</tr>
+				</c:forEach>
+				
+			</table>
 
 			<center>
 			<font size="5" style="font-family: Calibri, Garamond, Serif; color: green;">Successfully processed Request File.</font>

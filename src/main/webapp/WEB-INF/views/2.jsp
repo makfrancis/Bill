@@ -1,3 +1,6 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="com.accenture.tcf.bars.controller.BarsController" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,7 +13,7 @@
 <table id="content"
 	style="min-height: 80px; height: 80px; width: 100%; border: 0px; margin: 0; padding: 0; bordercollapse: collapse; background-color: #800000;">
 	<tr style="height: 60px;">
-		<td><img src="resources/images/acn_logo.PNG" alt="Banner Image"></td>
+		<td><img src="resources/acn_logo.PNG" alt="Banner Image"></td>
 		<td align=right>
 			<p style="font-family: Calibri, Garamond, Serif;">
 				<font color="white"; ><B> Accenture Philippines Delivery Center </B></font>
@@ -22,26 +25,50 @@
 	</tr>
 </table>
 <br><br>
-	<form action="process.htm" method="POST">
+	<form action="/process" method="POST">
 
 <center>
 			<font size="3.5" style="font-family: Calibri, Garamond, Serif; color: #D2691E;">Billing Automated Request System</font>
 			</center>
 			<br><br>
-
+			
+			<table>
+				<tr>
+					<th>billing cycle</th>
+					<th>start date</th>
+					<th>end date</th>
+					<th>firstname</th>
+					<th>lastname</th>
+					<th>amount</th>
+				</tr>
+				
+				<c:forEach var="recordItem" items="${records}">
+				<tr>
+					<td>${recordItem.billingCycle}</td>
+					<td>${recordItem.startDate}</td>
+					<td>${recordItem.endDate}</td>
+					<td>${recordItem.customerLastName}</td>
+					<td>${recordItem.customerFirstName}</td>
+					<td>${recordItem.amount}</td>
+				</tr>
+				</c:forEach>
+				
+			</table>
+			
+			<br><br>
 			<center>
-			<font size="5" style="font-family: Calibri, Garamond, Serif; color: red;">Invalid End  Date format at row 10.</font>
+			<font size="5" style="font-family: Calibri, Garamond, Serif; color: green;">Successfully processed Request File.</font>
 			</center>
 			<br><br>
         <hr>
         <hr>
 		<table align= "Center" style="font-family: Calibri, Garamond, Serif; ">
-			<tr>
-			<td colspan=125><img src="resources/images/Computer_training2_jpg.jpg" height=200 width=200></td>
+		<tr>
+			<td colspan=125><img src="resources/Computer_training2_jpg.jpg" height=200 width=200></td>
 				<td valign="Center">
 					<table align= "center" >
 					<!-- 	<tr><td font size="15" style="font-family: Calibri, Garamond, Serif; color: #D2691E;">Request Successfuly Processed!!!</td></tr> -->
-						<tr><td><a href="./">Process another Request</a></td></tr>
+						<tr><td><a href="/">Process another Request</a></td></tr>
 					</table>
 				</td>
 	<!-- 			<td colspan=50><img src="./images/Computer_training2_jpg.jpg" height=200 width=150></td>
@@ -62,6 +89,13 @@
     text-align:center;
     padding:5px;
     border:1px solid #999999
+}
+
+table {
+	text-align:center;
+	margin: 0 auto;
+	width: 80%;
+	font-family: Calibri, Garamond, Serif;
 }
 </style>
 <div id="footer">

@@ -50,13 +50,13 @@ public class TextInputFileImpl extends AbstractInputFile{
         	billCycle= Integer.parseInt(arr.get(i).substring(0, 2));
         	String startDate = null;
         	startDate = arr.get(i).substring(6, 10);
-        	startDate += arr.get(i).substring(2, 4);
-        	startDate += arr.get(i).substring(4, 6);
+        	startDate += "-" + arr.get(i).substring(2, 4);
+        	startDate += "-" + arr.get(i).substring(4, 6);
         	
         	String endDate = null;
         	endDate = arr.get(i).substring(14, 18);
-        	endDate += arr.get(i).substring(10, 12);
-        	endDate += arr.get(i).substring(12, 14);
+        	endDate += "-" + arr.get(i).substring(10, 12);
+        	endDate += "-" + arr.get(i).substring(12, 14);
         	
         	ctr++;
         	if(billCycle<1||billCycle>12) {
